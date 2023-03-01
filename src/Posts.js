@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 const Posts = ({POSTS_URL, posts, setPosts}) => {
   useEffect(() => {
-    const fetchUsers = async () => {
+    const fetchPosts = async () => {
       try{
         const response = await fetch(POSTS_URL)
         if (!response.ok) throw Error('Not yet received the data')
@@ -13,7 +13,7 @@ const Posts = ({POSTS_URL, posts, setPosts}) => {
       }
     }
 
-    fetchUsers();
+    fetchPosts();
   }, [])
 
   return (
