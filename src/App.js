@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Button from "./Button";
 import Users from "./Users";
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
 
   return (
     <div className="App">
+      <Button/>
       <Users
         USERS_URL={USERS_URL}
         users={users}
