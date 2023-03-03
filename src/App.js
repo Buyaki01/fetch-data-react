@@ -1,49 +1,42 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "./Button";
-import Users from "./Users";
-import Posts from "./Posts";
-import Comments from "./Comments";
 
 function App() {
-  const USERS_URL = 'http://jsonplaceholder.typicode.com/users'
-  const POSTS_URL = 'http://jsonplaceholder.typicode.com/posts'
-  const COMMENTS_URL = 'http://jsonplaceholder.typicode.com/comments'
-  const [users, setUsers] = useState([])
-  const [posts, setPosts] = useState([])
-  const [comments, setComments] = useState([])
+  const [reqUrl, setReqUrl] = useState('users')
+  const [items, setItems] = useState([]);
   const [selected, setSelected] = useState('Users')
+  const API_URL = 'http://jsonplaceholder.typicode.com/'
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      try{
+        const response = await fetch(`${API_URL}${reqUrl}`)
+        const data = await response.json()
+        setItems(data)
+      }catch(err){
+        console.log(err)
+      }
+    }
 
-  const handleButtonClick = (event) => {
-    setSelected(event.target.textContent);
-  }
-
-
+    fetchData();
+  }, [reqUrl])
+  
   return (
     <div className="App">
       <Button 
-        onClick={handleButtonClick}
         selected={selected}
+        setSelected={setSelected}
+        reqUrl={reqUrl}
+        setReqUrl={setReqUrl}
       />
 
-      {selected === 'Users' ? (
-        <Users
-          USERS_URL={USERS_URL}
-          users={users}
-          setUsers={setUsers}
-        />
-      ) : selected === 'Posts' ? (
-        <Posts
-          POSTS_URL={POSTS_URL}
-          posts={posts}
-          setPosts={setPosts}
-        />
-      ) : (
-        <Comments 
-          COMMENTS_URL={COMMENTS_URL}
-          comments={comments}
-          setComments={setComments}
-        />
-      )}
+      <ul>
+        {items.map(item => (
+          <li key={item.id}>
+            {JSON.stringify(item)}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

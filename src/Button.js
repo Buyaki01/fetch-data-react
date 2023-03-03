@@ -1,16 +1,42 @@
-import { useState } from "react";
+const Button = ({ selected, setSelected, setReqUrl }) => {
+  const handleButtonClick = (url, name) => {
+    setReqUrl(url);
+    setSelected(name);
+  };
 
-const Button = ({onClick, selected}) => {
-  
   return (
     <nav>
       <ul className="nav-list">
-        <li><button className={selected === 'Users' ? 'nav-button selected' : 'nav-button'} onClick={onClick}>Users</button></li>
-        <li><button className={selected === 'Posts' ? 'nav-button selected' : 'nav-button'} onClick={onClick}>Posts</button></li>
-        <li><button className={selected === 'Comments' ? 'nav-button selected' : 'nav-button'} onClick={onClick}>Comments</button></li>
+        <li>
+          <button
+            className={selected === 'Users' ? 'nav-button selected' : 'nav-button'}
+            onClick={() => handleButtonClick('users', 'Users')}
+          >
+            Users
+          </button>
+        </li>
+
+        <li>
+          <button
+            className={selected === 'Posts' ? 'nav-button selected' : 'nav-button'}
+            onClick={() => handleButtonClick('posts', 'Posts')}
+          >
+            Posts
+          </button>
+        </li>
+
+        <li>
+          <button
+            className={selected === 'Comments' ? 'nav-button selected' : 'nav-button'}
+            onClick={() => handleButtonClick('comments', 'Comments')}
+          >
+            Comments
+          </button>
+        </li>
+
       </ul>
     </nav>
   )
-}
+};
 
-export default Button
+export default Button;
