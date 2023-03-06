@@ -1,8 +1,5 @@
 import { useState, useEffect } from "react";
 import Button from "./Button";
-import UserTable from "./UserTable";
-import PostTable from "./PostTable";
-import CommentTable from "./CommentTable";
 
 function App() {
   const [reqUrl, setReqUrl] = useState('users')
@@ -23,16 +20,6 @@ function App() {
 
     fetchData();
   }, [reqUrl])
-
-  const renderTable = () => {
-    if (selected === 'Users') {
-      return <UserTable items={items} />;
-    } else if (selected === 'Posts') {
-      return <PostTable items={items} />;
-    } else if (selected === 'Comments') {
-      return <CommentTable items={items} />;
-    }
-  }
   
   return (
     <div className="App m-3">
@@ -43,7 +30,20 @@ function App() {
         setReqUrl={setReqUrl}
       />
 
-      {renderTable()}
+      <table className='p-3 border-2 border-solid border-black-500'>
+        <tbody>
+          {items.map(item => (
+            <tr key={item.id}>
+              {Object.entries(item).map(([key, value]) => {
+                return(
+                  <td className='p-3 border-2 border-solid border-black-500'>{JSON.stringify(value)}</td>
+                )
+              })}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
     </div>
   );
 }
