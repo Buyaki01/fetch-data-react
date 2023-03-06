@@ -35,7 +35,7 @@ function App() {
   }
   
   return (
-    <div className="App">
+    <div className="App m-3">
       <Button 
         selected={selected}
         setSelected={setSelected}
