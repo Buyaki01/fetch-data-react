@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
+import AddForm from "./AddForm";
 import Button from "./Button";
+import TableList from "./TableList";
 
 function App() {
   const [reqUrl, setReqUrl] = useState('users')
@@ -30,19 +32,11 @@ function App() {
         setReqUrl={setReqUrl}
       />
 
-      <table className='p-3 border-2 border-solid border-black-500'>
-        <tbody>
-          {items.map(item => (
-            <tr key={item.id}>
-              {Object.entries(item).map(([key, value]) => {
-                return(
-                  <td className='p-3 border-2 border-solid border-black-500'>{JSON.stringify(value)}</td>
-                )
-              })}
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <TableList
+        items={items}
+      />
+
+      <AddForm/>
 
     </div>
   );
