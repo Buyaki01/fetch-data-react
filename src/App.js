@@ -36,7 +36,7 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = {
-      // id,
+      id: items[items.length - 1].id + 1,
       name,
       userName,
       email,
