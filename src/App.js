@@ -31,6 +31,9 @@ function App() {
       },
       body: JSON.stringify(data)
     }) 
+    const responseData = await response.json();
+    console.log(responseData);
+    setItems([...items, responseData]);
   }
 
   const handleSubmit = (e) => {
