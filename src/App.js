@@ -54,9 +54,28 @@ function App() {
           lat,
           lng
         }
+      },
+      company: {
+        companyName,
+        catchPhrase,
+        bs
       }
     };
     sendDataToAPI(data);
+    setName('');
+    setUserName('');
+    setEmail('');
+    setPhone('');
+    setWebsite('');
+    setStreet('');
+    setSuite('');
+    setCity('');
+    setZipcode('');
+    setLat('');
+    setLng('');
+    setCompanyName('');
+    setCatchPhrase('');
+    setBs('');
   }
 
   useEffect(() => {

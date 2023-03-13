@@ -175,7 +175,7 @@ const AddForm = ({handleSubmit, name, setName, username, setUsername, email, set
         </div>
 
         <div>
-          <button type="submit" className='border border-blue-500 p-3 mt-5 mb-5 rounded'>
+          <button type="submit" className='border border-blue-500 p-3 mt-5 mb-5 rounded bg-gray-500 text-white'>
             Submit
           </button>
         </div>
